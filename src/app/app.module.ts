@@ -5,6 +5,8 @@ import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
 import { FlightSearchComponent } from "app/flight-search/flight-search.component";
+import { FlightService } from "app/flight-search/flight.service";
+import { BASE_URL } from "app/app.tokens";
 
 @NgModule({
   imports: [
@@ -16,7 +18,12 @@ import { FlightSearchComponent } from "app/flight-search/flight-search.component
     AppComponent,
     FlightSearchComponent
   ],
-  providers: [],
+  providers: [
+    // Global
+    //{ provide: FlightService, useClass: FlightService }
+    // 
+    {provide: BASE_URL, useValue: 'http://www.angular.at/api'}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,4 +1,4 @@
-
+ 
 export interface Flight {
     id: number; // int+double
     from: string;
