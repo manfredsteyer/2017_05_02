@@ -6,12 +6,15 @@ import { FlightService } from "app/flight-booking/flight-search/flight.service";
 @Component({
     selector: 'flight-search',
     templateUrl: './flight-search.component.html',
+    styleUrls: ['./flight-search.component.css'],
     providers: [FlightService]
 })
 export class FlightSearchComponent implements OnInit {
     
     constructor(private flightService: FlightService) { 
     }
+
+    allowedCities = 'Graz,Nürnberg,Hamburg';
 
     basket: any = {
         "3": true,

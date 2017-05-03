@@ -1,11 +1,32 @@
+<form #f="ngForm">
 <div class="form-group">
     <label>From</label>
-    <input [(ngModel)]="from" class="form-control">
+    <input 
+        [(ngModel)]="from" 
+        required
+        minlength="3"
+        maxlength="30"
+        pattern="[A-Za-zöäüßÖÄÜ]*"
+        [city]="allowedCities"
+        name="from"
+        class="form-control">
+
+    <div *ngIf="f?.controls['from']?.dirty">
+        <div *ngIf="!f?.controls['from']?.valid">
+            Fehler
+            <pre>{{ f?.controls['from']?.errors | json }}</pre>    
+        </div>
+        <div *ngIf="f?.controls['from']?.hasError('city')">City</div>
+        <div *ngIf="f?.controls['from']?.hasError('minlength')">Minlength</div>    
+        <div *ngIf="f?.controls['from']?.hasError('maxlength')">Maxlength</div>    
+        <div *ngIf="f?.controls['from']?.hasError('pattern')">Pattern</div>    
+        <div *ngIf="f?.controls['from']?.hasError('required')">Required</div>    
+    </div>
 </div>
 
 <div class="form-group">
     <label>To</label>
-    <input [(ngModel)]="to" class="form-control">
+    <input [(ngModel)]="to" name="to" class="form-control">
 </div>
 
 <div class="form-group">
@@ -15,7 +36,7 @@
         Search
     </button>
 </div>
-
+</form>
 
 <div class="row">
     <div *ngFor="let f of flights" style="margin-bottom:20px" class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
