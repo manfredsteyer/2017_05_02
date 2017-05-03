@@ -22,8 +22,8 @@
 <table class="table table-striped" *ngIf="flights.length > 0">
     <tr *ngFor="let flight of flights" [ngStyle]="{ 'background-color': (flight == selectedFlight) ? 'orange' : '' }">
         <td>{{flight.id}}</td>
-        <td>{{flight.from}}</td>
-        <td>{{flight.to}}</td>
+        <td>{{flight.from | city:'short'}}</td>
+        <td>{{flight.to | city:'long' }}</td>
         <td>{{flight.date | date:'dd.MM.yyyy HH:mm' }}</td>
         <td><a (click)="select(flight)">Select</a></td>
     </tr>
