@@ -16,9 +16,18 @@
     </button>
 </div>
 
+
+<div class="row">
+    <div *ngFor="let f of flights" style="margin-bottom:20px" class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+        <flight-card 
+            [item]="f" 
+            [(selected)]="basket[f.id]"></flight-card>
+    </div>
+</div>    
 <!--
     [ngClass]="{ 'active': flight == selectedFlight }"
     -->
+<!--    
 <table class="table table-striped" *ngIf="flights.length > 0">
     <tr *ngFor="let flight of flights" [ngStyle]="{ 'background-color': (flight == selectedFlight) ? 'orange' : '' }">
         <td>{{flight.id}}</td>
@@ -28,8 +37,11 @@
         <td><a (click)="select(flight)">Select</a></td>
     </tr>
 </table>
+-->
 
+<div class="row">
 <pre>Warenkorb
 ----------------
-{{ selectedFlight | json }}    
+{{ basket | json }}    
 </pre>    
+</div>

@@ -13,6 +13,12 @@ export class FlightSearchComponent implements OnInit {
     constructor(private flightService: FlightService) { 
     }
 
+    basket: any = {
+        "3": true,
+        "4": false,
+        "5": true
+    };
+
     from: string;
     to: string;
 

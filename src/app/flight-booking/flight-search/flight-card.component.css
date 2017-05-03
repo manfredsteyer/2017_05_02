@@ -1,0 +1,8 @@
+
+.card-active {
+    background-color: orange;
+}
+
+.card-inactive {
+    background-color: lightsteelblue;
+}
