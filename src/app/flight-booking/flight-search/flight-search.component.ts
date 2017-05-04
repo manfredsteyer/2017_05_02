@@ -49,8 +49,7 @@ message: string = "";
             return Observable.throw('from and to expected!');
         }
 
-        return Observable.create((sender: Observer<Flight[]>) => {
-
+        let result: Observable<Flight[]> = Observable.create((sender: Observer<Flight[]>) => {
             this
                 .flightService
                 .find(this.from, this.to)
@@ -69,7 +68,10 @@ message: string = "";
 
             });
 
-    }
+            result.publish().connect();
+
+            return result;
+}
     
     select(f: Flight): void {
         this.selectedFlight = f;
