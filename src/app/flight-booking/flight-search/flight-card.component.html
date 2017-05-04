@@ -11,5 +11,7 @@
     <p>
        <button class="btn btn-default" *ngIf="!selected" (click)="select()">Auswählen</button>
        <button class="btn btn-default" *ngIf="selected" (click)="deselect()">Entfernen</button>   
+    
+       <a class="btn btn-default" [routerLink]="['/flight-edit', item.id, { showDetails: true, expertMode: true, page:7}]">Edit</a>
     </p>
 </div>

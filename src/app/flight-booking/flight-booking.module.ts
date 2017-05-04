@@ -6,6 +6,9 @@ import { FlightSearchComponent } from "app/flight-booking/flight-search/flight-s
 import { FlightCardComponent } from "app/flight-booking/flight-search/flight-card.component";
 import { CityValidationDirective } from "app/shared/validation/city.validation.directive";
 import { ReactiveFlightSearchComponent } from "app/flight-booking/reactive-flight-search/reactive-flight-search.component";
+import { FlightBookingRouterModule } from "app/flight-booking/flight-booking.routes";
+import { PassengerSearchComponent } from "app/flight-booking/passenger-search/passenger-search.component";
+import { FlightEditComponent } from "app/flight-booking/flight-edit/flight-edit.component";
 
 
 @NgModule({
@@ -13,12 +16,15 @@ import { ReactiveFlightSearchComponent } from "app/flight-booking/reactive-fligh
         CommonModule, 
         FormsModule, 
         SharedModule,
-        ReactiveFormsModule 
+        ReactiveFormsModule,
+        FlightBookingRouterModule
     ],
     declarations: [
         FlightSearchComponent,
         FlightCardComponent,
-        ReactiveFlightSearchComponent
+        ReactiveFlightSearchComponent,
+        PassengerSearchComponent,
+        FlightEditComponent
     ],
     providers: [
         /* FlightService */
