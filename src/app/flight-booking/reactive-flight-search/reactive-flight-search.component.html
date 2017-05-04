@@ -1,0 +1,67 @@
+<form roundTrip [formGroup]="filter">
+
+    <div *ngIf="filter.hasError('roundTrip')">RoundTrip</div>
+
+<div class="form-group">
+    <label>From</label>
+    <input 
+        formControlName="from"
+        class="form-control">
+
+    <div *ngIf="filter.controls['from'].dirty">
+        <div *ngIf="!filter.controls['from'].valid">
+            Fehler
+            <pre>{{ filter.controls['from'].errors | json }}</pre>    
+        </div>
+        <div *ngIf="filter.controls['from'].hasError('city')">City</div>
+        <div *ngIf="filter.controls['from'].hasError('asyncCity')">asyncCity</div>
+        <div *ngIf="filter.controls['from'].pending"><marquee direction="down">Validierung wird ausgeführt!</marquee></div>
+        <div *ngIf="filter.controls['from'].hasError('minlength')">Minlength</div>    
+        <div *ngIf="filter.controls['from'].hasError('maxlength')">Maxlength</div>    
+        <div *ngIf="filter.controls['from'].hasError('pattern')">Pattern</div>    
+        <div *ngIf="filter.controls['from'].hasError('required')">Required</div>    
+    </div>
+</div>
+
+<div class="form-group">
+    <label>To</label>
+    <input formControlName="to" class="form-control">
+</div>
+
+<div class="form-group">
+    <button class="btn btn-default" 
+            (click)="search()" 
+            [disabled]="!from || !to">
+        Search
+    </button>
+</div>
+</form>
+
+<div class="row">
+    <div *ngFor="let f of flights" style="margin-bottom:20px" class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+        <flight-card 
+            [item]="f" 
+            [(selected)]="basket[f.id]"></flight-card>
+    </div>
+</div>    
+<!--
+    [ngClass]="{ 'active': flight == selectedFlight }"
+    -->
+<!--    
+<table class="table table-striped" *ngIf="flights.length > 0">
+    <tr *ngFor="let flight of flights" [ngStyle]="{ 'background-color': (flight == selectedFlight)  'orange' : '' }">
+        <td>{{flight.id}}</td>
+        <td>{{flight.from | city:'short'}}</td>
+        <td>{{flight.to | city:'long' }}</td>
+        <td>{{flight.date | date:'dd.MM.yyyy HH:mm' }}</td>
+        <td><a (click)="select(flight)">Select</a></td>
+    </tr>
+</table>
+-->
+
+<div class="row">
+<pre>Warenkorb
+----------------
+{{ basket | json }}    
+</pre>    
+</div>
